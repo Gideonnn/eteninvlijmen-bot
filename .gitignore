@@ -74,3 +74,4 @@ typings/
 
 # CUSTOM
 secrets.json
+.vscode
