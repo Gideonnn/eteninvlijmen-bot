@@ -19,7 +19,7 @@ bot.use(session());
 bot.use(stage.middleware());
 
 bot.command('help', helpCommand);
-bot.command('start', startCommand);
 bot.command('houdoe', exitCommand);
+bot.command('start', startCommand);
 
 bot.startPolling();
