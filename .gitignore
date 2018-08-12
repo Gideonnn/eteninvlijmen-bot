@@ -73,5 +73,5 @@ typings/
 .serverless
 
 # CUSTOM
-secrets.json
+.env
 .vscode

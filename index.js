@@ -1,13 +1,14 @@
+require('dotenv').config();
+
 const Telegraf = require('telegraf');
 const session = require('telegraf/session');
 const Stage = require('telegraf/stage');
 
-const secrets = require('./secrets.json');
 const texts = require('./translations');
 
 const registerWizard = require('./wizards/register.wizard');
 
-const bot = new Telegraf(secrets.telegramApiToken);
+const bot = new Telegraf(process.env.BOT_TOKEN);
 const stage = new Stage([registerWizard]);
 
 bot.use(session());
