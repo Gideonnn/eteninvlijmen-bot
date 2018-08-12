@@ -36,4 +36,13 @@ optie om alle mogelijkheden te verkennen.
   startSceneNotMe: `
 Oké, probeer het nog eens met een andere code a.u.b.
   `,
+
+  // Misc
+  exitError: `
+Er ging iets mis tijdens het uitloggen.
+  `,
+
+  exitSuccess: `
+Je bent uitgelogd en zal geen notificaties meer ontvangen.
+  `,
 };

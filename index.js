@@ -5,6 +5,7 @@ const session = require('telegraf/session');
 const Stage = require('telegraf/stage');
 
 // Commands
+const exitCommand = require('./commands/exit.commend');
 const helpCommand = require('./commands/help.command');
 
 // Wizards
@@ -18,6 +19,6 @@ bot.use(stage.middleware());
 
 bot.command('help', helpCommand);
 bot.command('start', ctx => ctx.scene.enter('register-wizard'));
-bot.command('houdoe', ctx => ctx.reply('doei'));
+bot.command('houdoe', exitCommand);
 
 bot.startPolling();
