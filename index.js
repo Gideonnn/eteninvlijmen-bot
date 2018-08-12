@@ -6,10 +6,10 @@ const Stage = require('telegraf/stage');
 
 const texts = require('./translations');
 
-const registerWizard = require('./wizards/register.wizard');
+const RegisterWizard = require('./wizards/register.wizard');
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-const stage = new Stage([registerWizard]);
+const stage = new Stage([new RegisterWizard('register-wizard')]);
 
 bot.use(session());
 bot.use(stage.middleware());

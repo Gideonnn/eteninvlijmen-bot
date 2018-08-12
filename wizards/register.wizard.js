@@ -5,46 +5,52 @@ const texts = require('../translations');
 
 const api = require('../api');
 
-const welcome = (ctx, next) => {
-  ctx.reply(texts.startSceneEnter);
-  ctx.wizard.next();
-};
+class RegisterScene extends WizardScene {
 
-const register = (ctx, next) => {
-  const message = ctx.update.message;
+  constructor(name = 'register-wizard') {
+    super(name);
+    this.options = { steps: [this.welcome, this.register, this.success]}
+    this.action('yes', this.yes);
+    this.action('no', this.no);
+  }
 
-  const code = message.text;
-  const tgUserId = ctx.update.message.from.id;
-  const tgUserName = ctx.update.message.from.first_name;
+  welcome(ctx) {
+    ctx.reply(texts.startSceneEnter);
+    ctx.wizard.next();
+  };
 
-  api.register(code, tgUserId, tgUserName)
-    .then(({ data }) => {
+  register(ctx) {
+    const message = ctx.update.message;
 
-      const inlineKeyboard = Markup.inlineKeyboard([
-        Markup.callbackButton('Ja', 'yes'),
-        Markup.callbackButton('Nee', 'no'),
-      ]).extra();
+    const code = message.text;
+    const tgUserId = ctx.update.message.from.id;
+    const tgUserName = ctx.update.message.from.first_name;
 
-      ctx.telegram.sendMessage(ctx.from.id, `Is je naam ${data.name}?`, inlineKeyboard);
-    });
-};
+    api.register(code, tgUserId, tgUserName)
+      .then(({ data }) => {
 
-const success = (ctx) => {
-  ctx.editMessageText(texts.startSceneRegisterSuccess);
-  ctx.scene.leave()
-};
+        const inlineKeyboard = Markup.inlineKeyboard([
+          Markup.callbackButton('Ja', 'yes'),
+          Markup.callbackButton('Nee', 'no'),
+        ]).extra();
 
-const registerWizard = new WizardScene('register-wizard', welcome, register, success);
+        ctx.telegram.sendMessage(ctx.from.id, `Is je naam ${data.name}?`, inlineKeyboard);
+      });
+  };
 
-registerWizard.action('yes', (ctx, next) => {
-  ctx.wizard.next();
-  next();
-});
+  success(ctx) {
+    ctx.editMessageText(texts.startSceneRegisterSuccess);
+    ctx.scene.leave()
+  };
 
-registerWizard.action('no', ctx => {
-  ctx.editMessageText(texts.startSceneNotMe);
-});
+  no(ctx) {
+    ctx.editMessageText(texts.startSceneNotMe);
+  }
 
-registerWizard.command("cancel", ctx => ctx.stage.leave());
+  yes(ctx, next) {
+    ctx.wizard.next();
+    next();
+  }
+}
 
-module.exports = registerWizard;
+module.exports = RegisterScene;
