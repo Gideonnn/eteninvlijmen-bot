@@ -18,9 +18,4 @@ bot.command('help', ctx => ctx.replyWithMarkdown(texts.help));
 bot.command('start', ctx => ctx.scene.enter('register-wizard'));
 bot.command('houdoe', ctx => ctx.reply('doei'));
 
-//debug
-bot.command('debug', ctx => {
-  ctx.reply('ack');
-});
-
 bot.startPolling();
