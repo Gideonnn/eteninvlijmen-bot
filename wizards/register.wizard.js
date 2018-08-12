@@ -34,7 +34,7 @@ class RegisterScene extends WizardScene {
             Markup.callbackButton('Ja', 'yes'),
             Markup.callbackButton('Nee', 'no'),
           ]).extra();
-          ctx.telegram.sendMessage(ctx.from.id, `Is je naam ${data.name}?`, inlineKeyboard);
+          ctx.reply(`Is je naam ${data.name}?`, inlineKeyboard);
         } else {
           ctx.reply(texts.startWizardRegisterError);
         }
