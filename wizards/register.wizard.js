@@ -15,7 +15,7 @@ class RegisterScene extends WizardScene {
   }
 
   welcome(ctx) {
-    ctx.reply(texts.startSceneEnter);
+    ctx.reply(texts.startWizardEnter);
     ctx.wizard.next();
   };
 
@@ -39,12 +39,12 @@ class RegisterScene extends WizardScene {
   };
 
   success(ctx) {
-    ctx.editMessageText(texts.startSceneRegisterSuccess);
+    ctx.editMessageText(texts.startWizardRegisterSuccess);
     ctx.scene.leave()
   };
 
   no(ctx) {
-    ctx.editMessageText(texts.startSceneNotMe);
+    ctx.editMessageText(texts.startWizardNotMe);
   }
 
   yes(ctx, next) {

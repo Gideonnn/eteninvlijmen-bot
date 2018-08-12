@@ -16,24 +16,24 @@ Je kan me gebruiken door middel van deze commando's:
 /houdoe - Verlaat de groep. Je zult geen notificaties meer ontvangen.
   `,
 
-  // Start scene
-  startSceneEnter: `
+  // Start Wizard
+  startWizardEnter: `
 Welkom bij Eten in Vlijmen. Het activeren van je account werkt \
 middels een inlogcode. Vul nu je inlogcode in:
   `,
 
-  startSceneRegisterError: `
+  startWizardRegisterError: `
 Je code lijkt niet te kloppen. Kun je het nog eens proberen?
   `,
 
-  startSceneRegisterSuccess: `
+  startWizardRegisterSuccess: `
 🎉  Welkom bij de club! 🎉
 
 Het is nu mogelijk om deel uit te maken van de planning. Zie de /help \
 optie om alle mogelijkheden te verkennen.
   `,
 
-  startSceneNotMe: `
+  startWizardNotMe: `
 Oké, probeer het nog eens met een andere code a.u.b.
   `,
 
