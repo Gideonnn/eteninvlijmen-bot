@@ -29,12 +29,15 @@ class RegisterScene extends WizardScene {
     api.register(code, tgUserId, tgUserName)
       .then(({ data }) => {
 
-        const inlineKeyboard = Markup.inlineKeyboard([
-          Markup.callbackButton('Ja', 'yes'),
-          Markup.callbackButton('Nee', 'no'),
-        ]).extra();
-
-        ctx.telegram.sendMessage(ctx.from.id, `Is je naam ${data.name}?`, inlineKeyboard);
+        if (data) {
+          const inlineKeyboard = Markup.inlineKeyboard([
+            Markup.callbackButton('Ja', 'yes'),
+            Markup.callbackButton('Nee', 'no'),
+          ]).extra();
+          ctx.telegram.sendMessage(ctx.from.id, `Is je naam ${data.name}?`, inlineKeyboard);
+        } else {
+          ctx.reply(texts.startWizardRegisterError);
+        }
       });
   };
 
