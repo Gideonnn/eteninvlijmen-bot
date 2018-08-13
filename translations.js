@@ -37,6 +37,16 @@ optie om alle mogelijkheden te verkennen.
 Oké, probeer het nog eens met een andere code a.u.b.
   `,
 
+  // Vote Wizard
+  planWizardInstructions: `
+Op welke dagen kun je? Gebruik de knoppen op het scherm om dagen te markeren.
+  `,
+
+  planWizardSuccess: `
+Oke, je mogelijke dagen zijn opgeslagen. Bedankt voor het doorgeven! Gebruik /vote \
+om je voorkeur te wijzigen.
+  `,
+
   // Misc
   exitError: `
 Er ging iets mis tijdens het uitloggen.
